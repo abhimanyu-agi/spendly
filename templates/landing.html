@@ -2,62 +2,82 @@
 
 {% block title %}Spendly — Track Every Rupee{% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+{% endblock %}
+
 {% block content %}
 
-<section class="hero">
-    <div class="hero-inner">
-        <div class="hero-badge">Personal Finance Tracker</div>
-        <h1 class="hero-title">
-            Know where your<br>
-            <em>money goes</em>
+<section class="hero-c">
+    <div class="hero-c-inner">
+
+        <div class="hero-c-badge">
+            <span class="hero-c-dot"></span>
+            Free to use · No credit card needed
+        </div>
+
+        <h1 class="hero-c-title">
+            Track every rupee.<br>
+            <span class="hero-c-title-accent">Know where it goes.</span>
         </h1>
-        <p class="hero-subtitle">
-            Log expenses, understand your spending patterns,
-            and take control of your financial life —
-            one transaction at a time.
+
+        <p class="hero-c-subtitle">
+            Spendly helps you log expenses, spot patterns, and stay<br>
+            on budget — without the spreadsheet headache.
         </p>
-        <div class="hero-actions">
-            <a href="{{ url_for('register') }}" class="btn-primary">Start tracking free</a>
-            <a href="{{ url_for('login') }}" class="btn-ghost">Sign in</a>
+
+        <div class="hero-c-actions">
+            <a href="{{ url_for('register') }}" class="hero-c-btn">Create free account</a>
+            <a href="#" class="hero-c-btn" id="seeHowBtn">See how it works</a>
         </div>
-    </div>
-    <div class="hero-visual">
-        <div class="mock-card">
-            <div class="mock-card-header">
-                <span class="mock-label">March 2026</span>
-                <span class="mock-total">₹12,450</span>
-            </div>
-            <div class="mock-bars">
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Bills</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar" style="width: 72%"></div>
-                    </div>
-                    <span class="mock-amt">₹4,500</span>
+
+        <div class="hero-c-visual">
+            <div class="mock-win">
+                <div class="mock-win-bar">
+                    <span class="mock-trafficdot mock-trafficdot-red"></span>
+                    <span class="mock-trafficdot mock-trafficdot-yellow"></span>
+                    <span class="mock-trafficdot mock-trafficdot-green"></span>
                 </div>
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Food</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar mock-bar-2" style="width: 52%"></div>
+                <div class="mock-win-stats">
+                    <div class="mock-win-stat">
+                        <span class="mock-win-stat-label">This month</span>
+                        <span class="mock-win-stat-value">₹18,240</span>
+                        <span class="mock-win-stat-change mock-win-stat-up">+12% vs last</span>
                     </div>
-                    <span class="mock-amt">₹3,200</span>
+                    <div class="mock-win-stat">
+                        <span class="mock-win-stat-label">Budget left</span>
+                        <span class="mock-win-stat-value">₹6,760</span>
+                        <span class="mock-win-stat-change mock-win-stat-good">43% remaining</span>
+                    </div>
+                    <div class="mock-win-stat">
+                        <span class="mock-win-stat-label">Transactions</span>
+                        <span class="mock-win-stat-value">34</span>
+                        <span class="mock-win-stat-sub">this month</span>
+                    </div>
                 </div>
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Health</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar mock-bar-3" style="width: 33%"></div>
+                <div class="mock-win-bars">
+                    <div class="mock-win-bar-row">
+                        <span class="mock-win-bar-label">Food</span>
+                        <div class="mock-win-bar-track">
+                            <div class="mock-win-bar-fill" style="width: 78%; background: #c17f24;"></div>
+                        </div>
                     </div>
-                    <span class="mock-amt">₹2,050</span>
-                </div>
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Transport</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar mock-bar-4" style="width: 28%"></div>
+                    <div class="mock-win-bar-row">
+                        <span class="mock-win-bar-label">Travel</span>
+                        <div class="mock-win-bar-track">
+                            <div class="mock-win-bar-fill" style="width: 55%; background: #4a90d9;"></div>
+                        </div>
                     </div>
-                    <span class="mock-amt">₹1,800</span>
+                    <div class="mock-win-bar-row">
+                        <span class="mock-win-bar-label">Bills</span>
+                        <div class="mock-win-bar-track">
+                            <div class="mock-win-bar-fill" style="width: 42%; background: #7b6cca;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 </section>
 
@@ -89,4 +109,58 @@
     </div>
 </section>
 
+<!-- Video modal -->
+<div class="modal-overlay" id="videoModal" aria-hidden="true">
+    <div class="modal-box">
+        <button class="modal-close" id="modalClose" aria-label="Close video">&times;</button>
+        <div class="modal-video-wrap">
+            <iframe
+                id="modalVideo"
+                src=""
+                data-src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0"
+                title="See how Spendly works"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const modal    = document.getElementById('videoModal');
+    const iframe   = document.getElementById('modalVideo');
+    const openBtn  = document.getElementById('seeHowBtn');
+    const closeBtn = document.getElementById('modalClose');
+
+    function openModal() {
+        iframe.src = iframe.dataset.src;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal() {
+        iframe.src = '';
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+    }
+
+    openBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal();
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+    });
+</script>
 {% endblock %}
