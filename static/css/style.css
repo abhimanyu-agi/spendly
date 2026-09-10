@@ -559,6 +559,266 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ------------------------------------------------------------------ */
+/* Hero — centered single-column redesign                              */
+/* ------------------------------------------------------------------ */
+
+.hero-c {
+    background: var(--paper-card);
+    padding: 4.5rem 2rem 5rem;
+    text-align: center;
+}
+
+.hero-c-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Badge */
+
+.hero-c-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.4rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(26, 71, 42, 0.18);
+}
+
+.hero-c-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+/* Title */
+
+.hero-c-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 6vw, 4.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0;
+}
+
+.hero-c-title-accent {
+    display: block;
+    color: var(--accent);
+}
+
+/* Subtitle */
+
+.hero-c-subtitle {
+    font-size: 1rem;
+    color: var(--ink-muted);
+    line-height: 1.75;
+    max-width: 540px;
+}
+
+/* Buttons */
+
+.hero-c-actions {
+    display: flex;
+    gap: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.hero-c-btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background 0.2s;
+    text-decoration: none;
+}
+
+.hero-c-btn:hover { background: var(--accent); }
+
+/* ------------------------------------------------------------------ */
+/* Browser mock window                                                 */
+/* ------------------------------------------------------------------ */
+
+.hero-c-visual {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.mock-win {
+    background: var(--paper-warm);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem 1.5rem;
+    box-shadow: 0 6px 40px rgba(0, 0, 0, 0.07);
+    text-align: left;
+}
+
+/* Traffic-light dots */
+
+.mock-win-bar {
+    display: flex;
+    gap: 7px;
+    margin-bottom: 1.25rem;
+}
+
+.mock-trafficdot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.mock-trafficdot-red    { background: #ff5f57; }
+.mock-trafficdot-yellow { background: #febc2e; }
+.mock-trafficdot-green  { background: #28c840; }
+
+/* Stat cards row */
+
+.mock-win-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.mock-win-stat {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.mock-win-stat-label {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    font-weight: 500;
+}
+
+.mock-win-stat-value {
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+    color: var(--ink);
+    line-height: 1.2;
+}
+
+.mock-win-stat-change { font-size: 0.78rem; font-weight: 600; }
+.mock-win-stat-up     { color: var(--danger); }
+.mock-win-stat-good   { color: var(--accent); }
+.mock-win-stat-sub    { font-size: 0.78rem; color: var(--ink-muted); }
+
+/* Bar chart */
+
+.mock-win-bars {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.mock-win-bar-row {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mock-win-bar-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-align: right;
+}
+
+.mock-win-bar-track {
+    height: 8px;
+    background: var(--border-soft);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.mock-win-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Video modal                                                         */
+/* ------------------------------------------------------------------ */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.modal-overlay.is-open {
+    display: flex;
+}
+
+.modal-box {
+    position: relative;
+    background: #000;
+    border-radius: var(--radius-md);
+    width: 100%;
+    max-width: 820px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1;
+    padding: 0.1rem 0.4rem;
+    transition: color 0.15s;
+}
+
+.modal-close:hover { color: #fff; }
+
+.modal-video-wrap {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+
+.modal-video-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ------------------------------------------------------------------ */
 /* Responsive                                                          */
 /* ------------------------------------------------------------------ */
 
@@ -578,4 +838,8 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 600px) {
     .nav-links a:not(.nav-cta) { display: none; }
     .hero { padding: 3rem 1rem 2rem; }
+    .hero-c { padding: 3rem 1rem 3.5rem; }
+    .hero-c-actions { flex-direction: column; width: 100%; }
+    .hero-c-btn { text-align: center; }
+    .mock-win-stats { grid-template-columns: 1fr; }
 }
